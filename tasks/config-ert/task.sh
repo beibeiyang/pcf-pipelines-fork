@@ -72,7 +72,7 @@ read -d'' -r input <<EOF
   "diego_cell": $DIEGO_CELL_INSTANCES,
   "doppler": $DOPPLER_INSTANCES,
   "loggregator_trafficcontroller": $LOGGREGATOR_TRAFFICCONTROLLER_INSTANCES,
-  "tcp_router": $TCP_ROUTER_INSTANCES,
+  "tcp_router": $TCP_ROUTER_INSTANCES
 }
 EOF
   echo "$input" | jq \
