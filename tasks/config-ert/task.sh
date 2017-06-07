@@ -91,5 +91,5 @@ om-linux \
   configure-product \
   --product-name cf \
   --product-properties "$CF_PROPERTIES" \
-  --product-network "$CF_NETWORK" \
-  --product-resources "$CF_RESOURCES"
+  --product-network "$CF_NETWORK" #\
+  # --product-resources "$CF_RESOURCES"
