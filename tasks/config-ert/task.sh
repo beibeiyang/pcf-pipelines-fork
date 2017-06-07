@@ -57,7 +57,7 @@ read -d'' -r input <<EOF
   "nfs_server": $NFS_SERVER_INSTANCES,
   "mysql_proxy": $MYSQL_PROXY_INSTANCES,
   "mysql": $MYSQL_INSTANCES,
-  "backup-prepare": $BACKUP_PREPARE_INSTANCES,
+  "backup_prepare": $BACKUP_PREPARE_INSTANCES,
   "ccdb": $CCDB_INSTANCES,
   "uaadb": $UAADB_INSTANCES,
   "uaa": $UAA_INSTANCES,
