@@ -72,9 +72,8 @@ jq \
     ".properties.system_blobstore": {
       "value": "internal"
     }
-  } |
+  } +
   if $tcp_routing == "enable" then
-   . +
    {
      ".properties.tcp_routing": {
         "value": "enable"
@@ -84,14 +83,12 @@ jq \
       }
     }
   else
-    . +
     {
       ".properties.tcp_routing": {
         "value": "disable"
       }
     }
-  end |
-  . +
+  end +
   {
     ".properties.logger_endpoint_port": {
       "value": $loggregator_endpoint_port
@@ -156,9 +153,8 @@ jq \
     ".diego_brain.static_ips": {
       "value": $ssh_static_ips
     }
-  } |
+  } +
   if $ssl_termination == "haproxy" then
-    . +
     {
       ".properties.networking_point_of_entry": {
         "value": "haproxy"
@@ -171,7 +167,6 @@ jq \
       }
     }
   elif $ssl_termination == "external_ssl" then
-    . +
     {
       ".properties.networking_point_of_entry": {
         "value": "external_ssl"
@@ -184,15 +179,13 @@ jq \
       }
     }
   else
-    . +
     {
       ".properties.networking_point_of_entry": {
         "value": "external_non_ssl"
       }
     }
-  end |
+  end +
   if $smtp_address != "" then
-    . +
     {
       ".properties.smtp_from": {
         "value": $smtp_from
@@ -218,9 +211,8 @@ jq \
     }
   else
     .
-  end |
+  end +
   if $syslog_host != "" then
-    . +
     {
       ".doppler.message_drain_buffer_size": {
         "value": $syslog_drain_buffer_size
@@ -240,16 +232,14 @@ jq \
     }
   else
     .
-  end |
+  end +
   if $authentication_mode == "internal" then
-    . +
     {
       ".properties.uaa": {
         "value": "internal"
       }
     }
   elif $authentication_mode == "ldap" then
-    . +
     {
       ".properties.uaa": {
         "value": "ldap"
@@ -287,8 +277,7 @@ jq \
     }
   else
     .
-  end |
-  . +
+  end +
   {
     ".uaa.service_provider_key_credentials": {
       value: {
@@ -296,9 +285,8 @@ jq \
         "private_key_pem": $saml_key_pem
       }
     }
-  } |
+  } +
   if $mysql_backups == "s3" then
-    . +
     {
       ".properties.mysql_backups": {
         "value": "s3"
@@ -323,7 +311,6 @@ jq \
       }
     }
   elif $mysql_backups == "scp" then
-    . +
     {
       ".properties.mysql_backups": {
         "value": "scp"
