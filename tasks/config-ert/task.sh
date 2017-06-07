@@ -49,32 +49,33 @@ CF_NETWORK=$(
 )
 
 CF_RESOURCES=$(
-read -d'' -r input <<EOF
-{
-  "consul_server": $CONSUL_SERVER_INSTANCES,
-  "nats": $NATS_INSTANCES,
-  "etcd_tls_server": $ETCD_TLS_SERVER_INSTANCES,
-  "nfs_server": $NFS_SERVER_INSTANCES,
-  "mysql_proxy": $MYSQL_PROXY_INSTANCES,
-  "mysql": $MYSQL_INSTANCES,
-  "backup_prepare": $BACKUP_PREPARE_INSTANCES,
-  "ccdb": $CCDB_INSTANCES,
-  "uaadb": $UAADB_INSTANCES,
-  "uaa": $UAA_INSTANCES,
-  "cloud_controller": $CLOUD_CONTROLLER_INSTANCES,
-  "ha_proxy": $HA_PROXY_INSTANCES,
-  "router": $ROUTER_INSTANCES,
-  "mysql_monitor": $MYSQL_MONITOR_INSTANCES,
-  "clock_global": $CLOCK_GLOBAL_INSTANCES,
-  "cloud_controller_worker": $CLOUD_CONTROLLER_WORKER_INSTANCES,
-  "diego_database": $DIEGO_DATABASE_INSTANCES,
-  "diego_brain": $DIEGO_BRAIN_INSTANCES,
-  "diego_cell": $DIEGO_CELL_INSTANCES,
-  "doppler": $DOPPLER_INSTANCES,
-  "loggregator_trafficcontroller": $LOGGREGATOR_TRAFFICCONTROLLER_INSTANCES,
-  "tcp_router": $TCP_ROUTER_INSTANCES
-}
+  read -d'' -r input <<EOF
+  {
+    "consul_server": $CONSUL_SERVER_INSTANCES,
+    "nats": $NATS_INSTANCES,
+    "etcd_tls_server": $ETCD_TLS_SERVER_INSTANCES,
+    "nfs_server": $NFS_SERVER_INSTANCES,
+    "mysql_proxy": $MYSQL_PROXY_INSTANCES,
+    "mysql": $MYSQL_INSTANCES,
+    "backup_prepare": $BACKUP_PREPARE_INSTANCES,
+    "ccdb": $CCDB_INSTANCES,
+    "uaadb": $UAADB_INSTANCES,
+    "uaa": $UAA_INSTANCES,
+    "cloud_controller": $CLOUD_CONTROLLER_INSTANCES,
+    "ha_proxy": $HA_PROXY_INSTANCES,
+    "router": $ROUTER_INSTANCES,
+    "mysql_monitor": $MYSQL_MONITOR_INSTANCES,
+    "clock_global": $CLOCK_GLOBAL_INSTANCES,
+    "cloud_controller_worker": $CLOUD_CONTROLLER_WORKER_INSTANCES,
+    "diego_database": $DIEGO_DATABASE_INSTANCES,
+    "diego_brain": $DIEGO_BRAIN_INSTANCES,
+    "diego_cell": $DIEGO_CELL_INSTANCES,
+    "doppler": $DOPPLER_INSTANCES,
+    "loggregator_trafficcontroller": $LOGGREGATOR_TC_INSTANCES,
+    "tcp_router": $TCP_ROUTER_INSTANCES
+  }
 EOF
+
   echo "$input" | jq \
     'map_values(. = {
       "instance_type": {"id":"automatic"},
