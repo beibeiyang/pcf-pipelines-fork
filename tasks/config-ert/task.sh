@@ -10,8 +10,8 @@ EOF
 
   CERTIFICATES=`om-linux -t https://$OPS_MGR_HOST -u $OPS_MGR_USR -p $OPS_MGR_PWD -k curl -p "$OPS_MGR_GENERATE_SSL_ENDPOINT" -x POST -d "$DOMAINS"`
 
-  SSL_CERT=`echo $CERTIFICATES | jq '.certificate'`
-  SSL_PRIVATE_KEY=`echo $CERTIFICATES | jq '.key'`
+  SSL_CERT=`echo $CERTIFICATES | jq --raw-output '.certificate'`
+  SSL_PRIVATE_KEY=`echo $CERTIFICATES | jq --raw-output '.key'`
 
   echo "Using self signed certificates generated using Ops Manager..."
 fi
